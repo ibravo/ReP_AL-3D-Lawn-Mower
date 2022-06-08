@@ -1,4 +1,4 @@
- 
+
 // ReP_AL Lawn Mower & ReP_AL Aerator Arduino Code
 // Please make sure you have installed all the library files to the Arduino libraries folder
 // You will need to unzip all the libraries from the GitHuB site.
@@ -17,7 +17,7 @@
 //#define BOARD_DUE
 
 // Uncomment if using an LCD & Keypad     leave commented out to activate TFT.
-//#define LCD_KEYPAD
+#define LCD_KEYPAD
 
 
 //*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -61,7 +61,7 @@ byte bcdToDec(byte val)
   #include <LiquidCrystal_I2C.h>
   LiquidCrystal_I2C lcd(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // Enter the i2C address here lcd(_x__  e.g. lcd(0x27
   bool LCD_Screen_Keypad_Menu = 1;
-  bool TFT_Screen_Menu        = 0;      
+  bool TFT_Screen_Menu        = 0;
   #else
 
 bool LCD_Screen_Keypad_Menu = 0;
@@ -94,9 +94,9 @@ const int kSclkPin = 31;  // CLK
 DS1302 rtc(kCePin, kIoPin, kSclkPin);
 
 //Sonar Setup for Front Sonars 1-3
-#define echoPin1 34   //S1               
+#define echoPin1 34   //S1
 #define trigPin1 35
-#define echoPin2 36   //S2 
+#define echoPin2 36   //S2
 #define trigPin2 37
 #define echoPin3 38   //S3
 #define trigPin3 39
@@ -119,7 +119,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   //Mower Pin Setup for the wheel Motor Bridge Controller
   //Motor A
   #define ENAPin 7                // EN Pins need a digital pin with PWM
-  #define IN1Pin 6                // IN Pins dont need digital PWM 
+  #define IN1Pin 6                // IN Pins dont need digital PWM
   #define IN2Pin 5
   //Motor B
   #define ENBPin 2                // EN Pins need a digital pin with PWM
@@ -129,7 +129,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   #define RPWM 8
   #define L_EN 9
   #define R_EN 10
-  
+
   #define PIXHAWK_LH_PWM 11    // MEGA D11
   #define PIXHAWK_RH_PWM 12    // MEGA D12
 
@@ -139,10 +139,10 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
 
 #if defined(ROBOT_AERATOR)
 
-  
+
   //Motor A
   #define ENAPin 5                // EN Pins need a digital pin with PWM
-  #define IN1Pin 40               // IN Pins dont need digital PWM 
+  #define IN1Pin 40               // IN Pins dont need digital PWM
   #define IN2Pin 41
   //Motor B
   #define ENBPin 4                // EN Pins need a digital pin with PWM
@@ -150,7 +150,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   #define IN4Pin 43
   //Motor C
   #define ENCPin 3                // EN Pins need a digital pin with PWM
-  #define IN5Pin 44               // IN Pins dont need digital PWM 
+  #define IN5Pin 44               // IN Pins dont need digital PWM
   #define IN6Pin 45
   //Motor D
   #define ENDPin 2                // EN Pins need a digital pin with PWM
@@ -167,7 +167,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
 
   #define PIXHAWK_LH_PWM 8        // MEGA D8
   #define PIXHAWK_RH_PWM 9         // MEGA D9
-  
+
 
   int Robot_Type                  = 2;
 
@@ -210,7 +210,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   int Data5;
   int Data6;
   int Data7;
-  
+
   //Sonar Variables
   long duration1 = 0;                     // Time required for the sonar ping to be recieved by the echo pin.
   long duration2 = 0;
@@ -220,7 +220,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   int distance2 = 999;
   int distance3 = 999;
 
-  int distance_blockage;     
+  int distance_blockage;
 
   int Sonar_Hit_1_Total;
   int Sonar_Hit_2_Total;
@@ -234,7 +234,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
 
   int Sonar_1_Error;
   int Sonar_2_Error;
-  int Sonar_3_Error;  
+  int Sonar_3_Error;
 
   // Bumper Variables
   bool Bump_Frnt_LH;
@@ -267,14 +267,14 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   //Membrane Key Variables
   byte  Start_Key_X;
   byte  Plus_Key_X;
-  byte  Minus_Key_X; 
+  byte  Minus_Key_X;
   byte  Stop_Key_X;  bool  Menu_Complete_Alarms;
 
   bool  Menu_Complete_Settings;
   bool  Menu_Complete_Sensors;
   bool  Menu_Complete_Motion;
   bool  Menu_Complete_NAVI;
-  bool  Menu_Complete_Tracking;  
+  bool  Menu_Complete_Tracking;
   bool  Menu_Complete;
   bool  Menu_NodeMCU_Complete;
   byte  Menu_Mode_Selection;
@@ -309,19 +309,19 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   int   Fake_All_Settings;
   int   Fake_Loops;
   int   Fake_Wire;
- 
 
-  
+
+
   //float Battery_Voltage_Last;
   float Amps_Last;
   int   Volts_Outside_Reading;
-  byte  OK_Nano_Data_Volt_Received; 
+  byte  OK_Nano_Data_Volt_Received;
   byte  OK_Nano_Data_Charge_Received;
   byte  Charge_Hits = 0;
   byte  Docked_Hits = 0;
   bool  Charge_Detected_MEGA = 0;
   int   VoltsTX_Last;
-  
+
   //Mow Calendar Variables
   byte Alarm_Hour_Now;
   byte Time_Hour;
@@ -353,7 +353,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   }
 
   //Perimeter Wire Tracking
-  int I; 
+  int I;
   int Track_Wire_Itterations;
   bool Outside_Wire;
   byte Exit_Zone;
@@ -377,7 +377,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   bool Abort_Wire_Find;
   bool No_Wire_Found_Fwd;
   bool No_Wire_Found_Bck;
-  int  Wire_Find_Attempt = 0; 
+  int  Wire_Find_Attempt = 0;
 
   int  PWM_Right;
   int  PWM_Left;
@@ -425,7 +425,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   char tmp_str[7]; // temporary variable used in convert function
 
   // converts int16 to string. Moreover, resulting strings will have the same length in the debug monitor.
-  char* convert_int16_to_str(int16_t i) { 
+  char* convert_int16_to_str(int16_t i) {
   sprintf(tmp_str, "%6d", i);
   return tmp_str;
   }
@@ -438,7 +438,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   int Linking_Section;
   int Leg = 1;
   float Compass_Last;
-  bool Wire_Found;  
+  bool Wire_Found;
 
   // GPS
   bool GPS_Inside_Fence = 1;
@@ -453,9 +453,9 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   int PIXHAWK_PWM_Value_RH = 0;
   int cycles;
 
-  #define PWM_1 A7   
-  #define PWM_2 A8  
-  
+  #define PWM_1 A7
+  #define PWM_2 A8
+
   //volatile int PIXHAWK_PWM_Value_LH = 0;
   //volatile int PIXHAWK_PWM_Value_RH = 0;
   volatile int prev_time = 0;
@@ -477,7 +477,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   float val_WIFI;
 
   // TFT
-  int  TFT_Menu_Command; 
+  int  TFT_Menu_Command;
   bool Menu_Complete_TFT;
   bool Mower_Is_Docking;
   bool Turn_To_Home;
@@ -510,21 +510,21 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
 
   // Serial Command Input
   int Command;
-  
 
- 
+
+
 /***********************************************************************************************
 
                    SETUP OF MOWER / Aerator
 
   The following setup parameters will setup the mower for your garden
   Turn on or off the settings to defien how you like the mower to behave.
-  
+
   Settings marked with EEPROM can be adjusted using the mower LCD menu.  Once changes and saved
-  the EEPROM settings will override the settings in this menu.  
-  
+  the EEPROM settings will override the settings in this menu.
+
   To clear these settings you need to clear the EEPROM
-    
+
   1 = Turned ON      0 = Turned OFF       Value = Value set for variable.
 
 ****************************************************************************************************/
@@ -536,11 +536,11 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   bool Cutting_Blades_Activate    = 1;     // EEPROM            // Activates the cutting blades and disc in the code
   bool WIFI_Enabled               = 1;     // EEPROM            // Activates the WIFI Fucntions
   bool Perimeter_Wire_Enabled     = 1;     // EEPROM            // Activates use of the perimeter boundary wire
-  
+
   // GPS Settings
   bool GPS_Enabled                = 0;     // EEPROM            // Activates the GPS Fence Module
   int  GPS_Type                   = 2;                          // 1 = ReP_AL Fence   2 = PIXHAWK
-  
+
 
   //Docking Station
   bool Use_Charging_Station       = 1;      //EEPROM            // 1 if you are using the docking/charging station     0 if not
@@ -557,7 +557,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   int Max_Tracking_Turn_Right     = 270;    //EEPROM            // The maximum number of turn right commands during wire tracking before a renewed wire find function is called (wheel spins)
   int Max_Tracking_Turn_Left      = 270;    //EEPROM            // a re-find the wire sub-routine is called if this value is reached.
   int Max_Cycle_Wire_Find         = 300;    //EEPROM            // Maximum number of forward tracking cycles in finding wire before the mower restarts a compass turn and wire find.
-  int Max_Cycle_Wire_Find_Back    = 50;     //EEPROM            // Maximum number of Backward tracking cycles in finding wire before the mower restarts a compass turn and wire find.  
+  int Max_Cycle_Wire_Find_Back    = 50;     //EEPROM            // Maximum number of Backward tracking cycles in finding wire before the mower restarts a compass turn and wire find.
 
   //Compass Settings
   int  Compass_Setup_Mode             = 1;                      // 1 to use DFRobot Library   2 to use Manual access code.  3 MechaQMC Library
@@ -567,12 +567,12 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   float CPower                        = 2;       //EEPROM       // Magnification of heading to PWM - How strong the mower corrects itself in Compass Mowing
 
   // GYRO Settings
-  bool GYRO_Enabled                   = 0;      // EEPROM       // Enable the GYRO - Automatically activates the GYRO heading hold               
+  bool GYRO_Enabled                   = 0;      // EEPROM       // Enable the GYRO - Automatically activates the GYRO heading hold
   float GPower                        = 3;      // EEPROM       // Magnification of heading to PWM - How strong the mower corrects itself in Compass Mowing
-  
+
   // Pattern Mow
   int  Pattern_Mow                = 0;       //EEPROM       // 0 = OFF |  1 = Parallel  | 2 = Sprials | 3 = Wire Mow
-    
+
     // Pattern Spiral
     int    Max_Cycles_Spirals    = 500;      // Overrides the Max_Cycles for straught line mowing as the spirals requires more loops to complete
     float  Compass_Mow_Direction = 110;      // Mow Direction of line when pattern mow is activated
@@ -584,14 +584,14 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
     int Line_Length_Cycles      = 25;        // length of the line mowed
 
     // Wire Perimeter Mow
-    
+
 
 
   // Safety Tilt Feature
   int  Angle_Sensor_Enabled           = 0;      //EEPROM       // Prvents Mower from climibing steep hills
   int  Tip_Over_Sensor_Enabled        = 0;      //EEPROM       // Turns mower off if turned over
 
-  //Rain sensor 
+  //Rain sensor
   bool Rain_Sensor_Installed          = 1;  //EEPROM            // 1  = Rain sensor installed    0 = no sensor installed.
   int  Rain_Total_Hits_Go_Home        = 10; //EEPROM            // This sensor only makes sense in combination with a mower docking station
                                                                 // as the mower is sent there to get out of the rain.
@@ -616,7 +616,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
 
   //Wheel Motors Setup
   bool Ramp_Motor_ON             = 1;
-  
+
   int Max_Cycles_Straight        = 250;     //EEPROM            // Number of loops the Sketch will run before the mower just turns around anyway. Adjust according to your garden length
   int PWM_MaxSpeed_LH            = 240;     //EEPROM            // Straight line speed LH Wheel (Looking from back of mower)  Will be overidden if saved in EEPROM
   int PWM_MaxSpeed_RH            = 255;     //EEPROM            // Straight line speed RH Wheel - adjust to keep mower tracking straight.  Will be overridden if saved in EEPROM
@@ -625,7 +625,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   int Slow_Speed_MAG             = -900;                        // MAG Value that Slow Speed Kicks In
   int PWM_Slow_Speed_LH          = 160;                         // Straight line speed when the mower is almost over the wire Left Wheel.
   int PWM_Slow_Speed_RH          = 175;                         // Straight line speed when the mower is almost over the wire Right Wheel.
-  
+
   int Mower_Turn_Delay_Min       = 1000;    //EEPROM            // Min Max Turn time of the Mower after it reverses at the wire. 1000 = 1 second
   int Mower_Turn_Delay_Max       = 2500;    //EEPROM            // A random turn time between these numbers is selected by the software
   int Mower_Reverse_Delay        = 1800;    //EEPORM            // Time the mower reverses before making a turn.
@@ -633,7 +633,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
   bool Wheel_Amp_Sensor_ON       = 0;                           // Measures the amps in the wheel motor to detect blocked wheels.
   float Max_Wheel_Amps           = 3.5;                         // Maximum amperage allowed in the wheels before a blockage is called.
   int  Wheel_Blocked_Count_Max   = 3;                           // Number of times the wheels blocked are sensed before a reverse action takes place.
-      
+
 
   //Blade Motor Setup
   //Blade Speed can be modified in the settings menu and will be written to EEPROM
@@ -656,21 +656,21 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
 
   // If the Alarm is changed in settings it will be written to EEPROM and the settings below will be overriden.
   // Action for Alarm 1 is set to exit the dock and mow at this time.
-  // To change this action go to "void Activate_Alarms()" 
+  // To change this action go to "void Activate_Alarms()"
   bool Alarm_1_ON                 = 0;       //EEPROM            // Activate Alarm 1  (1 = ON 0 = OFF)
   int  Alarm_1_Hour               = 12;      //EEPROM            // Mowing Hour Number 1
   int  Alarm_1_Minute             = 00;      //EEPROM            // Alarm Minute 1
   bool Alarm_1_Repeat             = 0;                           // Repeat the Alarm at the same time
   int  Alarm_1_Action             = 1;       //EEPROM            // Sets the actions to be performed when the alarm is called
 
-  // Action for Alarm 2 can be set in "void Activate_Alarms()" 
+  // Action for Alarm 2 can be set in "void Activate_Alarms()"
   bool Alarm_2_ON                 = 0;       //EEPROM            // Activate Alarm 2 (1 = ON 0 = OFF)
   int  Alarm_2_Hour               = 12;      //EEPROM            // Mowing Hour Number 2
   int  Alarm_2_Minute             = 00;      //EEPROM            // Alarm minute 2
   bool Alarm_2_Repeat             = 0;                           // Repeat the Alarm at the same time
   int  Alarm_2_Action             = 1;       //EEPROM            // Sets the actions to be performed when the alarm is called
 
-  // Action for Alarm 3 can be set in "void Activate_Alarms()" 
+  // Action for Alarm 3 can be set in "void Activate_Alarms()"
   // Go Home Alarm
   bool Alarm_3_ON                 = 0;       //EEPROM            // Activate Alarm 3 (1 = ON 0 = OFF)
   int  Alarm_3_Hour               = 12;      //EEPROM            // Mowing Hour Number 3
@@ -697,20 +697,20 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
     int InMax = -1500;                                            // the maximum received signal value  the wire
     /*General Setup PID numbers for wire tracking*/
     float P               = 0.08;              //EEPROM           // Multiplication factor to the error measured to the wire center.  if jerky movement when tracking reduce number
-    float D               = 10;                                   // Dampening value to avoid the mower snaking on the wire.  
+    float D               = 10;                                   // Dampening value to avoid the mower snaking on the wire.
     byte Scale            = 36;                                   // Serial Monitor Line Tracking Print Scale
 
     // Gives the mower extra turning power at sharp turns in the wire during tracking
     bool Boost_Turn           = 1;                                // When the wheel PWM value is below this value the mower slows to make the curve better
                                                                   // For Planetary Motors = 100  220 Small Motors Use = 150
-    int Min_Track_PWM         = 110;                              
+    int Min_Track_PWM         = 110;
     int Hard_Track_Turn_Delay = 10;
-    
-  
+
+
     // These values set the scale for the wire print out in the serial monitor once tracking
     int OutMin = 150;
     int OutMid = 400;
-    int OutMax = 1500;                                            
+    int OutMax = 1500;
 
     int Outside_Wire_Count_Max          = 15;                     // If the mower is outside the wire this many times the mower is stopped
     int Action_On_Over_Wire_Count_Max   = 3;                      // Set 1 to hibernate mower (Power Off and Stop)   Set 2 to refind garden using sonar and wire detect function
@@ -719,7 +719,7 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
     bool Show_TX_Data                   = 0;                      // Show the values recieved from the Nano / ModeMCU in the serial monitor
 
 
-/************************************************************************************************************/    
+/************************************************************************************************************/
 
 
 
@@ -729,10 +729,10 @@ void setup() {
   if (WIFI_Enabled == true) Serial2.begin(9600);					// If WIFI is on open Serial port 2 for the NodeMCU communication
   Wire.begin();                                           // start the i2c interface
   Serial.println(F(" "));
-  Serial.println(F(" "));  
+  Serial.println(F(" "));
   if (Robot_Type == 1) Serial.print(F("ReP_AL Robot Lawn Mower :"));
   if (Robot_Type == 2) Serial.print(F("ReP_AL Robot Aerator:"));
-  Serial.println(Version);  
+  Serial.println(Version);
   Serial.println(F("==================="));
   Serial.println(F(""));
   Serial.println(F("Starting Mower Setup"));
@@ -750,15 +750,15 @@ void setup() {
   Alarm_1_ON = 0;
   Alarm_2_ON = 0;
   Alarm_3_ON = 0;
-  Serial.println(F(""));  
-  
+  Serial.println(F(""));
+
   //Clear_EERPOM();
-  
-  #if defined(BOARD_DUE) 
+
+  #if defined(BOARD_DUE)
     Serial.println("BOARD = DUE");
     Load_dueFlashStorage_Saved_Data();
     #endif
- 
+
   #if defined(BOARD_MEGA)
     Serial.println("BOARD = MEGA");
     Load_EEPROM_Saved_Data();
@@ -770,7 +770,7 @@ void setup() {
   Serial.print(F("  Charging Set to = "));
   Serial.print(Amps_Charging_Setting);
   Serial.println(F(" Amps"));
-  
+
   // If the manuel set time is switched on
   if (Set_Time == 1 ) {
     Serial.print(F("Setting Time"));
@@ -779,15 +779,15 @@ void setup() {
     }
   if (PCB == 0) DisplayTime_DS1302();
   if (PCB == 1) Display_DS3231_Time();
-  
+
   Serial.println(F(""));
   Prepare_Mower_from_Settings();
 
   #if defined(LCD_KEYPAD)
   Setup_Run_LCD_Intro ();
   Setup_Membrane_Buttons();
-  #endif  
-  
+  #endif
+
   Setup_DFRobot_QMC5883_HMC5883L_Compass();                     // USes the DFRobot Library
   Setup_Gyro();
   delay(100);
@@ -818,11 +818,11 @@ Print_Mower_Status();                                                           
 if ((Mower_Docked == 1) && (LCD_Screen_Keypad_Menu == 1))         Print_LCD_Volt_Info();                                  // Print the voltage to the LCD screen
 if  (Mower_Docked == 1)                                           Check_if_Charging();
 if ((Mower_Docked == 1) && (LCD_Screen_Keypad_Menu == 1))         Print_LCD_Info_Docked();                                // Print information to the LCD screen
-if ((Mower_Docked == 1) && (LCD_Screen_Keypad_Menu == 1))         Print_Time_On_LCD(); 
+if ((Mower_Docked == 1) && (LCD_Screen_Keypad_Menu == 1))         Print_Time_On_LCD();
 if ((Mower_Docked == 1) && (LCD_Screen_Keypad_Menu == 1))         Check_Membrane_Switch_Input_Docked();                   // Check the membrane buttons for any input
-if ((Mower_Docked == 1) && (GPS_Enabled == 1) && (GPS_Type == 1)) Check_GPS_In_Out();                                     // Get the GPS Signal In / Out of Fence                                
-if ((Mower_Docked == 1) && (GPS_Enabled == 1) && (GPS_Type == 2)) Check_PIXHAWK();                                     // Get the GPS Signal In / Out of Fence    
-if (Mower_Docked == 1)                                            Running_Test_for_Boundary_Wire();                       // Test is the boundary wire is live                                 
+if ((Mower_Docked == 1) && (GPS_Enabled == 1) && (GPS_Type == 1)) Check_GPS_In_Out();                                     // Get the GPS Signal In / Out of Fence
+if ((Mower_Docked == 1) && (GPS_Enabled == 1) && (GPS_Type == 2)) Check_PIXHAWK();                                     // Get the GPS Signal In / Out of Fence
+if (Mower_Docked == 1)                                            Running_Test_for_Boundary_Wire();                       // Test is the boundary wire is live
 if (Mower_Docked == 1)                                            Manouver_Dock_The_Mower();
 if (Mower_Docked == 1)                                            Display_Next_Alarm();
 if (Mower_Docked == 1)                                            Activate_Alarms();
@@ -864,19 +864,17 @@ if ((Mower_Running == 1) && (Wheel_Amp_Sensor_ON == 1) )                        
 if ((Mower_Running == 1) && (Wire_Detected == 1))                                                                         Check_Wire_In_Out();                // Test if the mower is in or out of the wire fence.
 if ((Mower_Running == 1) && (GPS_Enabled == 1) && (GPS_Type == 1))                                                        Check_GPS_In_Out();                 // Test is the GPS Fence has been crossed
 if ((Mower_Running == 1) && (Wire_Detected == 1) && (Outside_Wire == 0))                                                  Check_Sonar_Sensors();              // If the mower is  the boundary wire check the sonars for obsticles and prints to the LCD
-if ((Mower_Running == 1) && (Wire_Detected == 1) && (Outside_Wire == 0) && (Sonar_Hit == 0))                              Manouver_Mow_Aerate_The_Grass();    // Inputs to the wheel motors / blade motors according to surroundings 
+if ((Mower_Running == 1) && (Wire_Detected == 1) && (Outside_Wire == 0) && (Sonar_Hit == 0))                              Manouver_Mow_Aerate_The_Grass();    // Inputs to the wheel motors / blade motors according to surroundings
 if ((Mower_Running == 1) && (Wire_Detected == 1) && (Outside_Wire == 0) && (Sonar_Hit == 0))                              Check_Bumper();                     // If the mower is  the boundary wire check the Bumper for activation
 if ((Mower_Running == 1) && (Wire_Detected == 1) && ((Outside_Wire == 1) || (Bumper == 1))  && (Loop_Cycle_Mowing > 0))   Manouver_Turn_Around();             // If the bumper is activated or the mower is outside the boundary wire turn around
 if ((Mower_Running == 1) && (GPS_Enabled == 1) && (GPS_Inside_Fence == 0))                                                Manouver_Turn_Around();             // If the GPS Fence is activated Turn Around
-if ((Mower_Running == 1) && (Wire_Detected == 1) && (Outside_Wire == 0) && (Sonar_Hit == 1))                              Manouver_Turn_Around_Sonar();       // If sonar hit is detected and mower is  the wire, manouver around obsticle 
+if ((Mower_Running == 1) && (Wire_Detected == 1) && (Outside_Wire == 0) && (Sonar_Hit == 1))                              Manouver_Turn_Around_Sonar();       // If sonar hit is detected and mower is  the wire, manouver around obsticle
 
 // WIFI Commands from and to APP
 if (Manuel_Mode == 1)                             Receive_WIFI_Manuel_Commands();
 if (Manuel_Mode == 1)                             Print_LCD_Info_Manuel();
 if (Manuel_Mode == 0)                             Get_WIFI_Commands();                                   // TX and RX data from NodeMCU
 
-Serial.println(); 
-  
-}  // End Loop
+Serial.println();
 
-  
+}  // End Loop

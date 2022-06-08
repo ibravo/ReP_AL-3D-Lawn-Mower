@@ -3,6 +3,46 @@ ReP_AL 3D Printed Robot Lawn Mower
 
 Mega_V9.7 Details
 ----------------------
+Bottom:
+5V - 5V power brick
+GND - GND power brick
+A5      - Wire Sensor
+A8      - Tilt Sensor A
+A9      - Tilt Sensor B
+
+Top:
+D2      - ENA Motor Bridge A
+D3      - IN1 Motor Bridge A
+D4      - IN2 Motor Bridge A
+D5      - ENA Motor Bridge B
+D6      - IN1 Motor Bridge B
+D7      - IN2 Motor Bridge B
+D8      - 2 LPWM Blade Motor Controller
+D9      - 3 R_EN Blade Motor Controller
+D10     - 4 L_EN Blade Motor Controller
+D14 TX3 - RX TFT Screen
+D15 RX3 - TX TFT Screen
+D16 TX2 - D2 NodeMCU
+D17 RX2 - D3 NodeMCU
+D18 TX2 - 10 Nano
+D19 RX2 - 11 Nano
+D20     - SCA Compass
+D21     - SCL Compass
+
+Side:
+D24     - Blade Motor Relay
+D29     - RST 29 Clock
+D30     - DAT 30 Clock
+D31     - CLK 31 Clock
+D34     - Sonar 1
+D35     - Sonar 1
+D36     - Sonar 2
+D37     - Sonar 2
+D38     - Sonar 3
+D39     - Sonar 3
+D46     - Bumper 1
+D47     - Bumper 2
+
 
 Mega_V9.7.ino
 Load_EEPROM_Saved_Data()
@@ -24,7 +64,7 @@ Manouvers.ino
 // Manouvers are a set of motion functions or motor actions that are regulary called
 // e.g. Turn the mower around
 
-// void Manouver_Mow_The_Grass()      normal grass cutting operation 
+// void Manouver_Mow_The_Grass()      normal grass cutting operation
 // void Manouver_Aerate_The_Grass()   aeration process
 // void Manouver_Find_Wire_Track()    Finds the wire edge before tracking the wire
 // void Manouver_Turn_Around()        How the mower eacts when corssing the wire
@@ -33,7 +73,7 @@ Manouvers.ino
 // void Manouver_Manuel_Mode()
 // void Manouver_Start_Mower()
 // void Manouver_Mower_Exit_Dock()
-// void Manouver_Dock_The_Mower() 
+// void Manouver_Dock_The_Mower()
 // void Manouver_Park_The_Mower_Low_Batt()
 // void Manouver_Park_The_Mower()
 // void Manouver_Hibernate_Mower()
@@ -147,4 +187,3 @@ Track_Perimeter_Wire_To_Dock()
 
 //Starts an algorithym to find the wire again after it is lost in tracking
 void Tracking_Restart_Blocked_Path()
-
